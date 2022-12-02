@@ -3,7 +3,6 @@
 
 """The setup script."""
 
-import sys
 from setuptools import setup, find_packages
 
 
@@ -30,8 +29,7 @@ setup(
 
         ]
     },
-    install_requires=[],
-    license='GPLv3',
+    install_requires=['pytango'],
     long_description="Library and Tango DS for Alba Electrometer first "
                      "version",
     include_package_data=True,
