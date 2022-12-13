@@ -2,6 +2,7 @@ import _thread
 import math
 import logging
 import logging.handlers
+import time
 
 from tango import DevState, Database, AttrQuality, DeviceProxy
 from tango.server import Device, attribute, command, device_property
@@ -99,8 +100,8 @@ class PyAlbaEm(Device):
             self.my_logger.warning(msg)
         return w_val
 
-    def always_executed_hook(self):
-        self.checkAlbaEmState()
+    # def always_executed_hook(self):
+    #     self.dev_state()
 
     def dev_state(self):
         state = self.AlbaElectr.getState()
@@ -121,7 +122,8 @@ class PyAlbaEm(Device):
     @attribute(dtype=float)
     def I1(self):
         try:
-            return float(self.AlbaElectr.getMeasure('1'))
+            self.attr_I1_read = float(self.AlbaElectr.getMeasure('1'))
+            return self.attr_I1_read
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read I1: %s", e)
@@ -129,7 +131,8 @@ class PyAlbaEm(Device):
     @attribute(dtype=float)
     def I2(self):
         try:
-            return float(self.AlbaElectr.getMeasure('2'))
+            self.attr_I2_read = float(self.AlbaElectr.getMeasure('2'))
+            return self.attr_I2_read
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read I2: %s", e)
@@ -137,7 +140,8 @@ class PyAlbaEm(Device):
     @attribute(dtype=float)
     def I3(self):
         try:
-            return float(self.AlbaElectr.getMeasure('3'))
+            self.attr_I3_read = float(self.AlbaElectr.getMeasure('3'))
+            return self.attr_I3_read
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read I3: %s", e)
@@ -145,7 +149,8 @@ class PyAlbaEm(Device):
     @attribute(dtype=float)
     def I4(self):
         try:
-            return float(self.AlbaElectr.getMeasure('4'))
+            self.attr_I4_read = float(self.AlbaElectr.getMeasure('4'))
+            return self.attr_I4_read
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read I4: %s", e)
