@@ -1,4 +1,4 @@
-from .device import AlbaEm
+from .device import PyAlbaEm
 
 
 def main():
@@ -8,4 +8,4 @@ def main():
     args = ['PyAlbaEM'] + sys.argv[1:]
     fmt = '%(asctime)s %(threadName)s %(levelname)s %(name)s %(message)s'
     logging.basicConfig(level=logging.INFO, format=fmt)
-    run((AlbaEm), args=args)
+    run((PyAlbaEm,), args=args)

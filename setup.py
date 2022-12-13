@@ -39,7 +39,7 @@ setup(
     package_data={},
     python_requires='>=3.7',
     setup_requires=[],
-    extras_require=[],
+    extras_require={},
     url='',
     version='0.0.0',
     zip_safe=True

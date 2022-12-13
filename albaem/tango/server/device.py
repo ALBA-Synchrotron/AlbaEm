@@ -226,7 +226,8 @@ class PyAlbaEm(Device):
             quality = AttrQuality.ATTR_VALID
             if self.attr_I1_read is not None:
                 quality = self.checkRanges(self.attr_I1_read, 0)
-            return value, quality
+
+            return value, time.time(), quality
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read_range_ch1: %s", e)
@@ -250,7 +251,7 @@ class PyAlbaEm(Device):
             quality = AttrQuality.ATTR_VALID
             if self.attr_I2_read is not None:
                 quality = self.checkRanges(self.attr_I2_read, 1)
-            return value, quality
+            return value, time.time(), quality
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read_range_ch2: %s", e)
@@ -274,7 +275,7 @@ class PyAlbaEm(Device):
             quality = AttrQuality.ATTR_VALID
             if self.attr_I3_read is not None:
                 quality = self.checkRanges(self.attr_I3_read, 2)
-            return value, quality
+            return value, time.time(), quality
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read_range_ch3: %s", e)
@@ -298,7 +299,7 @@ class PyAlbaEm(Device):
             quality = AttrQuality.ATTR_VALID
             if self.attr_I4_read is not None:
                 quality = self.checkRanges(self.attr_I4_read, 3)
-            return value, quality
+            return value, time.time(), quality
         except Exception as e:
             self.set_state(DevState.FAULT)
             self.my_logger.error("Exception in read_range_ch4: %s", e)
