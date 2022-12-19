@@ -652,9 +652,13 @@ class PyAlbaEm(Device):
             self.my_logger.error("Exception in read_Filters: %s", e)
 
     @Filters.setter
-    def Filters(self, value):
-        print("Attribute value = ", value)
-        self.AlbaElectr.setFiltersAll(value)
+    def Filters(self, values):
+        print("Attribute value = ", values)
+        filters = []
+        for i, value in enumerate(values):
+            v = [str(i+1), value]
+            filters.append(v)
+        self.AlbaElectr.setFilters(filters)
         print(str(self.AlbaElectr.getFiltersAll()))
 
     @attribute(dtype=str)
