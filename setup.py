@@ -40,7 +40,7 @@ setup(
     python_requires='>=3.7',
     setup_requires=[],
     extras_require={},
-    url='',
+    url='https://github.com/ALBA-Synchrotron/AlbaEm',
     version='1.0.0',
     zip_safe=True
 )
