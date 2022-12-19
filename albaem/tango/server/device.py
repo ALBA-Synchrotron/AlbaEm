@@ -738,9 +738,14 @@ class PyAlbaEm(Device):
             self.my_logger.error("Exception in read_aInversions: %s", e)
 
     @aInversions.setter
-    def aInversions(self, value):
-        print("Attribute value = ", value)
-        self.AlbaElectr.setInvsAll(value)
+    def aInversions(self, values):
+        print("Attribute value = ", values)
+        invs = []
+        for i, value in enumerate(values):
+            v = [str(i + 1), value]
+            invs.append(v)
+
+        self.AlbaElectr.setInvs(invs)
         print(str(self.AlbaElectr.getInvsAll()))
 
     @attribute(dtype=str)
@@ -828,7 +833,7 @@ class PyAlbaEm(Device):
             v = [str(i+1), value]
             invs.append(v)
 
-        self.AlbaElectr.setInvs(invs)
+        self.AlbaElectr.setDInvs(invs)
         print(str(self.AlbaElectr.getDInvsAll()))
 
     @attribute(dtype=float)
