@@ -13,7 +13,9 @@ from ...core import AlbaEm
 class PyAlbaEm(Device):
     AlbaEmName = device_property(dtype=str)
     LogFileName = device_property(dtype=str, default_value="")
-    DynamicAttributes = device_property(dtype=[str], default_value="")
+
+    # TODO: Evaluate if we want to implement.
+    # DynamicAttributes = device_property(dtype=[str], default_value="")
 
     def init_device(self):
         super().init_device()
