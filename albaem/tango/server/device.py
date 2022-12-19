@@ -332,10 +332,9 @@ class PyAlbaEm(Device):
             self.my_logger.error("Exception in read_Ranges: %s", e)
 
     @Ranges.setter
-    def Ranges(self, value):
-        d = value.split(',')
+    def Ranges(self, values):
         ranges = []
-        for i, value in enumerate(d):
+        for i, value in enumerate(values):
             r = [str(i + 1), value]
             ranges.append(r)
             self.AllRanges[i] = value
