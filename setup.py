@@ -41,6 +41,6 @@ setup(
     setup_requires=[],
     extras_require={},
     url='',
-    version='0.0.0',
+    version='1.0.0',
     zip_safe=True
 )
