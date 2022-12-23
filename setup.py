@@ -25,7 +25,7 @@ setup(
     description="Library and Tango DS for Alba Electrometer first version",
     entry_points={
         'console_scripts': [
-            'PyAlbaEM=albaem.tango.server:main',
+            'PyAlbaEm=albaem.tango.server:main',
 
         ]
     },
