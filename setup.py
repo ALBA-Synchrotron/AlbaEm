@@ -41,6 +41,6 @@ setup(
     setup_requires=[],
     extras_require={},
     url='https://github.com/ALBA-Synchrotron/AlbaEm',
-    version='1.1.1',
+    version='1.1.2',
     zip_safe=True
 )
