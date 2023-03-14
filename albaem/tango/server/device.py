@@ -1288,6 +1288,29 @@ class PyAlbaEm(Device):
             ch = f'offset_percentage_ch{i}'
             dev_proxy.write_attribute(ch, percentage)
 
+    def changeOffsets(self, channels, value):
+        self.set_status("The device is Correcting Offsets. ")
+
+        chans = []
+        for ra in channels:
+            chans.append(str(ra))
+        rgs = self.AlbaElectr.getRanges(chans)
+
+        try:
+            self.AlbaElectr.digitalOffsetCorrect(channels, 'all', value, 1)
+        except Exception as e:
+            # TODO: what to do when offset correction fails?!?!?
+            self.error_stream('Exception while running offset correction.')
+            self.error_stream(repr(e))
+        finally:
+            self.AlbaElectr.setRanges(rgs)
+            rgs2 = self.AlbaElectr.getRanges(chans)
+            print("Before, after of ranges: ")
+            print(repr(rgs), repr(rgs2))
+
+        self.set_status(self.AlbaElectr.getStatus())
+        self.AlbaElectr.stateMoving = False
+
     @command(dtype_in=str, dtype_out=str)
     def sendCommand(self, cmd):
         answer = self.AlbaElectr.ask(cmd)
