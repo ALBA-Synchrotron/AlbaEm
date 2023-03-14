@@ -1285,7 +1285,7 @@ class PyAlbaEm(Device):
         for i in channels:
             self._offsetPercentages[i - 1] = percentage
             print(f'----------------    offset_percentage_ch{i} {percentage}')
-            ch = f'offset_percentage_ch{i}d'
+            ch = f'offset_percentage_ch{i}'
             dev_proxy.write_attribute(ch, percentage)
 
     @command(dtype_in=str, dtype_out=str)
