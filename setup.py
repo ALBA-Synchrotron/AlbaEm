@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 setup(
     author="Roberto J. Homs Puron",
     author_email='rhoms@cells.es',
-    license="GPLv3",
+    license="GPL-3.0-or-later",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
